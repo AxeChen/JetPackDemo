@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
 }
 
 android {
@@ -8,7 +9,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.axe.livedata"
+        applicationId "com.axe.viewmodel"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
@@ -43,5 +44,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.2.0'
     implementation  'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
 }
