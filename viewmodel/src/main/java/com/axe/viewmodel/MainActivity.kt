@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity(), ViewModelStoreOwner {
 
         // 1、初始化ViewModel
         var myViewModel = ViewModelProvider(this).get(MyViewModel::class.java)
+//        var myViewModel = ViewModelProvider(viewModelStore,ViewModelProvider.NewInstanceFactory()).get(MyViewModel::class.java)
 
         Log.i("myViewModel", myViewModel.hashCode().toString())
 
