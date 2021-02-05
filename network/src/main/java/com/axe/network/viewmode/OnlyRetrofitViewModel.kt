@@ -9,7 +9,7 @@ import com.axe.network.RetrofitManger
 import retrofit2.Call
 import retrofit2.Callback
 
-class OnelyRetrofitViewModel : ViewModel() {
+class OnlyRetrofitViewModel : ViewModel() {
 
     val api by lazy { RetrofitManger.getApiService() }
     var calls: MutableList<Call<*>> = mutableListOf()
