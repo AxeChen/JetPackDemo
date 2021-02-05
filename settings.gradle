@@ -1,3 +1,4 @@
+include ':room'
 include ':network'
 include ':viewmodel'
 include ':livedata'
