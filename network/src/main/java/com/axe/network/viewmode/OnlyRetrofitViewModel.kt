@@ -26,7 +26,7 @@ class OnlyRetrofitViewModel : ViewModel() {
                     val res = response.body()
                     res?.run {
                         if (res.info == 0) {
-                            articlesLiveData.postValue(res.data.datas)
+                            articlesLiveData.postValue(res.data?.datas)
                         } else {
                             articlesLiveData.postValue(mutableListOf())
                         }

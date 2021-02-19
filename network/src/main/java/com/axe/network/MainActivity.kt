@@ -7,12 +7,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.axe.network.viewmode.CoroutinesViewModel
 import com.axe.network.viewmode.OnlyRetrofitViewModel
 import com.axe.network.viewmode.RxJavaViewModel
+import com.axe.network.viewmode2.CoroutinesViewModel2
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     private val viewModel by lazy { ViewModelProvider(this).get(OnlyRetrofitViewModel::class.java) }
-    private val viewModel2 by lazy { ViewModelProvider(this).get(CoroutinesViewModel::class.java) }
+    private val viewModel2 by lazy { ViewModelProvider(this).get(CoroutinesViewModel2::class.java) }
     private val viewModel3 by lazy { ViewModelProvider(this).get(RxJavaViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnCoroutinesRequest.setOnClickListener {
-            viewModel2.getArticles(1)
+            viewModel2.getArticles2(1)
         }
         btnRxJavaRequest.setOnClickListener {
             viewModel3.getArticles(1)

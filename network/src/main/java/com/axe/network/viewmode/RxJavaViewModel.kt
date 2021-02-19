@@ -18,7 +18,7 @@ class RxJavaViewModel : ViewModel() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 if (it.info == 0) {
-                    articlesLiveData.postValue(it.data.datas)
+                    articlesLiveData.postValue(it.data?.datas)
                 } else {
                     articlesLiveData.postValue(mutableListOf())
                 }

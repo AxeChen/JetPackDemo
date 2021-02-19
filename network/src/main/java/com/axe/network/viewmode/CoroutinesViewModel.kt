@@ -16,11 +16,10 @@ class CoroutinesViewModel : ViewModel() {
         viewModelScope.launch {
             val respose = api.getArticleList2(page)
             if (respose.info == 0) {
-                articlesLiveData.postValue(respose.data.datas)
+                articlesLiveData.postValue(respose.data?.datas)
             } else {
                 articlesLiveData.postValue(mutableListOf())
             }
-
         }
     }
 
