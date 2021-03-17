@@ -25,6 +25,9 @@ class MainActivity : AppCompatActivity() {
         // 数据发生改变
         liveData1.postValue(1000)
         liveData2.postValue("33333")
+        liveData2.postValue("666")
+        liveData2.postValue("7777")
+        liveData2.postValue("8888")
 
         // addSource将所有的MutableLiveData统一观察
         mediatorLiveData.addSource(liveData1,dataObserver3)

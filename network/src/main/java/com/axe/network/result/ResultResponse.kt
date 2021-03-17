@@ -1,4 +1,4 @@
-package com.axe.network
+package com.axe.network.result
 
 import com.axe.network.exception.ApiException
 

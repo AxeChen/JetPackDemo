@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.axe.network.ArticleBean
 import com.axe.network.ArticleListBean
-import com.axe.network.Response
+import com.axe.network.response.Response
 import com.axe.network.RetrofitManger
 import retrofit2.Call
 import retrofit2.Callback

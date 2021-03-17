@@ -10,7 +10,7 @@ import com.axe.network.viewmode.RxJavaViewModel
 import com.axe.network.viewmode2.CoroutinesViewModel2
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private val viewModel by lazy { ViewModelProvider(this).get(OnlyRetrofitViewModel::class.java) }
     private val viewModel2 by lazy { ViewModelProvider(this).get(CoroutinesViewModel2::class.java) }
@@ -20,6 +20,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         startObserver()
+
+
+
         btnRequest.setOnClickListener {
             viewModel.getArticles(1)
         }
@@ -33,6 +36,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startObserver() {
+
+        viewModel2.apiError.observe(this, errorObserver)
 
         viewModel3.articlesLiveData.observe(this, Observer {
             it.run {

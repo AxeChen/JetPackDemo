@@ -30,6 +30,25 @@ object CustomException {
      * 协议错误
      */
     const val HTTP_ERROR = 1003
+
+    // 业务相关错误
+
+    /**
+     * 重新登陆
+     */
+    const val RE_LOGIN = 2
+
+    /**
+     *  其他错误等等
+     */
+    const val OTHER = 3
+
+    /**
+     * 需要提示错误
+     */
+    const val ERROR_TEXT = 4
+
+
     fun handleException(e: Throwable): ApiException {
         return if (e is JsonParseException
             || e is JSONException

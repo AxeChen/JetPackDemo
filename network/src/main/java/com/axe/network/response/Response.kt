@@ -1,4 +1,4 @@
-package com.axe.network
+package com.axe.network.response
 
 class Response<T>(
     val data: T?,
