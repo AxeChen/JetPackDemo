@@ -38,7 +38,7 @@ class CoroutinesViewModel2 : BaseViewModel() {
                     is ResultResponse.Error2 -> {
                         // 业务上面的错误
                         articlesLiveData.postValue(mutableListOf())
-                        showError(it.apiException.message!!)
+                        showError(it.apiException.displayMessage)
                     }
                 }
             }
@@ -46,7 +46,7 @@ class CoroutinesViewModel2 : BaseViewModel() {
         }, exception = {
             // 系统的错误
             // 1、本地定义liveData发送
-            showError(it.message!!)
+            showError(it.displayMessage)
             // 2、公共livedata处理
         })
     }

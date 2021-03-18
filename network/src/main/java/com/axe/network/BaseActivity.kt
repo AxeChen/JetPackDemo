@@ -25,7 +25,7 @@ open class BaseActivity : AppCompatActivity() {
                         // 其他的一些错误
                     }
                     CustomException.ERROR_TEXT -> {
-                        Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, it.displayMessage, Toast.LENGTH_SHORT).show()
                     }
                 }
             }

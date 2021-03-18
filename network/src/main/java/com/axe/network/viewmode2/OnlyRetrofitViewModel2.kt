@@ -39,7 +39,7 @@ class OnlyRetrofitViewModel2 : BaseViewModel() {
             override fun onFailure(call: Call<Response<ArticleListBean>>, t: Throwable) {
                 // 错误的情况
                 t.printStackTrace()
-                apiError.postValue(CustomException.handleException(t))
+                showError(CustomException.handleException(t).displayMessage)
             }
         })
         calls.add(call)

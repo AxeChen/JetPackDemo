@@ -55,16 +55,16 @@ object CustomException {
             || e is ParseException
         ) {
             //解析错误
-            ApiException(PARSE_ERROR, e.message!!)
+            ApiException(PARSE_ERROR, "Json解析错误")
         } else if (e is ConnectException) {
             //网络错误
-            ApiException(NETWORK_ERROR, e.message!!)
+            ApiException(NETWORK_ERROR, "网络错误")
         } else if (e is UnknownHostException || e is SocketTimeoutException) {
             //连接错误
-            ApiException(NETWORK_ERROR, e.message!!)
+            ApiException(NETWORK_ERROR, "链接服务器错误")
         } else {
             //未知错误
-            ApiException(UNKNOWN, e.message!!)
+            ApiException(UNKNOWN, "未知错误")
         }
     }
 }

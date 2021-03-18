@@ -8,20 +8,20 @@ import com.axe.network.viewmode.CoroutinesViewModel
 import com.axe.network.viewmode.OnlyRetrofitViewModel
 import com.axe.network.viewmode.RxJavaViewModel
 import com.axe.network.viewmode2.CoroutinesViewModel2
+import com.axe.network.viewmode2.OnlyRetrofitViewModel2
+import com.axe.network.viewmode2.RxJavaViewModel2
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
 
-    private val viewModel by lazy { ViewModelProvider(this).get(OnlyRetrofitViewModel::class.java) }
+    private val viewModel by lazy { ViewModelProvider(this).get(OnlyRetrofitViewModel2::class.java) }
     private val viewModel2 by lazy { ViewModelProvider(this).get(CoroutinesViewModel2::class.java) }
-    private val viewModel3 by lazy { ViewModelProvider(this).get(RxJavaViewModel::class.java) }
+    private val viewModel3 by lazy { ViewModelProvider(this).get(RxJavaViewModel2::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         startObserver()
-
-
 
         btnRequest.setOnClickListener {
             viewModel.getArticles(1)
@@ -37,8 +37,8 @@ class MainActivity : BaseActivity() {
 
     private fun startObserver() {
 
-        viewModel2.apiError.observe(this, errorObserver)
 
+        viewModel3.apiError.observe(this, errorObserver)
         viewModel3.articlesLiveData.observe(this, Observer {
             it.run {
                 if (this.size > 0) {
@@ -52,6 +52,8 @@ class MainActivity : BaseActivity() {
             }
         })
 
+
+        viewModel2.apiError.observe(this, errorObserver)
         viewModel2.articlesLiveData.observe(this, Observer {
             it.run {
                 if (this.size > 0) {
@@ -65,6 +67,7 @@ class MainActivity : BaseActivity() {
             }
         })
 
+        viewModel.apiError.observe(this,errorObserver)
         viewModel.articlesLiveData.observe(this, Observer {
             it.run {
                 if (this.size > 0) {

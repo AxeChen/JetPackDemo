@@ -53,4 +53,28 @@ open class BaseViewModel : ViewModel() {
             }
         }
     }
+
+    /**
+     * 没有协程的情况
+     */
+    fun <T : Any> executeResponseNotCoroutines(response: Response<T>): ResultResponse<T> {
+        var code = response.info
+        // 判断服务器返回的状态码
+        return when (code) {
+            0 -> {
+                if (response.data != null) {
+                    ResultResponse.Success(response.data)
+                } else {
+                    val exception = ApiException(code, response.msg)
+                    apiError.postValue(exception)
+                    ResultResponse.Error2(ApiException(code, response.msg))
+                }
+            }
+            else -> {
+                var exception = ApiException(code, response.msg)
+                apiError.postValue(exception)
+                ResultResponse.Error2(exception)
+            }
+        }
+    }
 }
