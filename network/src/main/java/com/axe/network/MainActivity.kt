@@ -77,7 +77,7 @@ class MainActivity : BaseActivity() {
                         text.append(it.title)
                     }
 
-                    
+
                     tvShowData.setText(text.toString())
                 }
             }
