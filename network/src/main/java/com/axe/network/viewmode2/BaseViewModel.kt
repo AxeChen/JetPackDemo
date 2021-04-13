@@ -9,12 +9,19 @@ import com.axe.network.exception.ApiException
 import com.axe.network.exception.CustomException
 import kotlinx.coroutines.*
 
-open class BaseViewModel : ViewModel() {
+abstract class BaseViewModel : ViewModel() {
 
     // 异常LiveData
     var apiError: MutableLiveData<ApiException> = MutableLiveData()
 
-    fun launch2(block: suspend CoroutineScope.() -> Unit, exception: (ApiException) -> Unit = {}) {
+    /**
+     * 封装的展示异常信息的方法
+     */
+    open fun showError(error: String) {
+        apiError.postValue(ApiException(CustomException.ERROR_TEXT, error))
+    }
+
+    fun launch(block: suspend CoroutineScope.() -> Unit, exception: (ApiException) -> Unit = {}) {
         val exceptionHandler = CoroutineExceptionHandler { _, exception ->
             // 异常处理回调
             val apiException = CustomException.handleException(exception)
@@ -27,35 +34,8 @@ open class BaseViewModel : ViewModel() {
         }
     }
 
-    open fun showError(error: String) {
-        apiError.postValue(ApiException(CustomException.ERROR_TEXT, error))
-    }
-
-    suspend fun <T : Any> executeResponse(response: Response<T>): ResultResponse<T> {
-        return withContext(Dispatchers.IO) {
-            var code = response.info
-            // 判断服务器返回的状态码
-            when (code) {
-                0 -> {
-                    if (response.data != null) {
-                        ResultResponse.Success(response.data)
-                    } else {
-                        val exception = ApiException(code, response.msg)
-                        apiError.postValue(exception)
-                        ResultResponse.Error2(ApiException(code, response.msg))
-                    }
-                }
-                else -> {
-                    var exception = ApiException(code, response.msg)
-                    apiError.postValue(exception)
-                    ResultResponse.Error2(exception)
-                }
-            }
-        }
-    }
-
     /**
-     * 没有协程的情况
+     * 没有协程的情况数据解析方式
      */
     fun <T : Any> executeResponseNotCoroutines(response: Response<T>): ResultResponse<T> {
         var code = response.info

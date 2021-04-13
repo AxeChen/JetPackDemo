@@ -7,6 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface Api {
+
     // 只有Retrofit的情况
     @GET("article/list/{page}/json")
     fun getArticleList(@Path("page") page: Int): Call<Response<ArticleListBean>>

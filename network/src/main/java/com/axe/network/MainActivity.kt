@@ -33,6 +33,9 @@ class MainActivity : BaseActivity() {
         btnRxJavaRequest.setOnClickListener {
             viewModel3.getArticles(1)
         }
+        btnClearData.setOnClickListener {
+            tvShowData.text = ""
+        }
     }
 
     private fun startObserver() {
@@ -67,7 +70,7 @@ class MainActivity : BaseActivity() {
             }
         })
 
-        viewModel.apiError.observe(this,errorObserver)
+        viewModel.apiError.observe(this, errorObserver)
         viewModel.articlesLiveData.observe(this, Observer {
             it.run {
                 if (this.size > 0) {

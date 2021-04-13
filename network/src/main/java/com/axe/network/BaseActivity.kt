@@ -12,7 +12,6 @@ open class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
-
     // 公共的异常处理方法
     val errorObserver by lazy {
         Observer<ApiException> {

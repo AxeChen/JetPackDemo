@@ -3,7 +3,9 @@ package com.axe.network.viewmode2
 import androidx.lifecycle.MutableLiveData
 import com.axe.network.ArticleBean
 import com.axe.network.RetrofitManger
+import com.axe.network.exception.ApiException
 import com.axe.network.exception.CustomException
+import com.axe.network.response.Response
 import com.axe.network.result.ResultResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -35,6 +37,8 @@ class RxJavaViewModel2 : BaseViewModel() {
             })
         mCompositeDisposable.add(disposable)
     }
+
+
 
     override fun onCleared() {
         super.onCleared()
