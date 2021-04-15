@@ -4,24 +4,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
 class ArticleListAdapter :
-    ListAdapter<ArticleBean, ArticleViewHolder>(ArticleDiffCallBack()) {
+    PagingDataAdapter<ArticleBean, ArticleViewHolder>(ArticleDiffCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
         return ArticleViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_article, null)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_article, parent,false)
         )
     }
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         holder.run {
             val article = getItem(position)
-            titleText?.text = article.title
-            articleTime?.setText(article.time)
+            article?.run {
+                titleText?.text = article.title
+                articleTime?.setText(article.time)
+            }
         }
     }
 }
