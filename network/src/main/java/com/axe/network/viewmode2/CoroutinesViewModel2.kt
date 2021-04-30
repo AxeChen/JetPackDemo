@@ -29,9 +29,7 @@ class CoroutinesViewModel2 : BaseViewModel() {
             }
         }, exception = {
             // 系统的错误
-            // 1、本地定义liveData发送
             showError(it.displayMessage)
-            // 2、公共livedata处理
         })
     }
 

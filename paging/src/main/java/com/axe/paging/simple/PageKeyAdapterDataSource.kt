@@ -1,4 +1,4 @@
-package com.axe.paging
+package com.axe.paging.simple
 
 import androidx.paging.PagingSource
 

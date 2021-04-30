@@ -9,6 +9,9 @@ import com.axe.network.exception.ApiException
 import com.axe.network.exception.CustomException
 import kotlinx.coroutines.*
 
+/**
+ * BaseViewModel，添加了数据统一处理和封装
+ */
 abstract class BaseViewModel : ViewModel() {
 
     // 异常LiveData
